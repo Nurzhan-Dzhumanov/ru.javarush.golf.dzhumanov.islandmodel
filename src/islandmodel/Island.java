@@ -1,8 +1,4 @@
-package IslandModel;
-
-import IslandModel.Animals.Animal;
-import IslandModel.Animals.Predators.Predator;
-import IslandModel.Animals.Predators.Wolf;
+package islandmodel;
 
 public class Island {
 

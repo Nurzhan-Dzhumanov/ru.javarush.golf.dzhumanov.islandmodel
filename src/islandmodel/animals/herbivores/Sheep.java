@@ -1,20 +1,20 @@
-package IslandModel.Animals.Herbivores;
+package islandmodel.animals.herbivores;
 
-import IslandModel.Animals.Animal;
-import IslandModel.Animals.Predators.Predator;
-import IslandModel.Location;
-import IslandModel.Plants.Plant;
+import islandmodel.animals.Animal;
+import islandmodel.animals.predators.Predator;
+import islandmodel.Location;
+import islandmodel.plants.Plant;
 
 import java.util.List;
 import java.util.Objects;
 
-public class Duck extends Animal implements Herbivore, Predator {
+public class Sheep extends Animal implements Herbivore {
 
-    String typeOfAnimal = "Duck";
+    String typeOfAnimal = "Sheep";
 
     @Override
     public Object multiplyHerbivore(List<Herbivore> predatorList) {
-        return new Duck();
+        return null;
     }
 
     @Override
@@ -32,33 +32,22 @@ public class Duck extends Animal implements Herbivore, Predator {
         return null;
     }
 
-
     @Override
     public void eatPlant(List<Plant> plants) {
 
     }
 
     @Override
-    public void eatMeat(Location[][] locations, int x, int y) {
-
-    }
-
-    @Override
-    public void multiplyPredator(Location[][] locations, int x, int y) {
-
-    }
-
-    @Override
     public String toString() {
-        return "\uD83E\uDD86-Duck";
+        return "\uD83D\uDC11-Sheep";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Duck duck = (Duck) o;
-        return Objects.equals(typeOfAnimal, duck.typeOfAnimal);
+        Sheep sheep = (Sheep) o;
+        return Objects.equals(typeOfAnimal, sheep.typeOfAnimal);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package IslandModel;
+package islandmodel;
 
 
 public class Runner {
@@ -12,7 +12,6 @@ public class Runner {
         System.out.println("==================================");
         island.islandLaunch();
         island.print();
-
 
 
 

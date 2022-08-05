@@ -1,10 +1,10 @@
-package IslandModel.Animals.Predators;
+package islandmodel.animals.predators;
 
-import IslandModel.Animals.Animal;
-import IslandModel.Animals.Herbivores.Duck;
-import IslandModel.Animals.Herbivores.Horse;
-import IslandModel.Animals.Herbivores.Sheep;
-import IslandModel.Location;
+import islandmodel.animals.Animal;
+import islandmodel.animals.herbivores.Duck;
+import islandmodel.animals.herbivores.Horse;
+import islandmodel.animals.herbivores.Sheep;
+import islandmodel.Location;
 
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class Wolf extends Animal implements Predator {
     @Override
     public void multiplyPredator(Location[][] locations, int x, int y) {
         for (int i = 0; i < locations[x][y].predators.size(); i++) {
-            if (this.equals(locations[x][y].predators.get(i)) && count < 30 && count > 1) {
+            if (this.equals(locations[x][y].predators.get(i)) && count < numberOfAnimals && count > 1) {
                 count++;
                 locations[x][y].predators.add(new Wolf());
             }
@@ -38,12 +38,12 @@ public class Wolf extends Animal implements Predator {
 
     @Override
     public void directionOfMovement(Location[][] locations, int x, int y) {
-        int moveX = (int) (Math.random() * 4);
-        int moveY = (int) (Math.random() * 4);
+        int moveX = (int) (Math.random() * travelSpeed);
+        int moveY = (int) (Math.random() * travelSpeed);
         int sizeX = (x + moveX) % locations[x].length;
         int sizeY = (y + moveY) % locations[x].length;
-        locations[x][y].predators.remove(new Wolf());
-        locations[sizeX][sizeY].predators.add(new Wolf());
+        locations[x][y].predators.remove(this);
+        locations[sizeX][sizeY].predators.add(this);
 
     }
 

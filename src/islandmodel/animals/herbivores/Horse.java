@@ -1,9 +1,9 @@
-package IslandModel.Animals.Herbivores;
+package islandmodel.animals.herbivores;
 
-import IslandModel.Animals.Animal;
-import IslandModel.Animals.Predators.Predator;
-import IslandModel.Location;
-import IslandModel.Plants.Plant;
+import islandmodel.animals.Animal;
+import islandmodel.animals.predators.Predator;
+import islandmodel.Location;
+import islandmodel.plants.Plant;
 
 import java.util.List;
 

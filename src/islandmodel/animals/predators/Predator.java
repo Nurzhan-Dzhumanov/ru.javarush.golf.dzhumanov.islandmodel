@@ -1,6 +1,6 @@
-package IslandModel.Animals.Predators;
+package islandmodel.animals.predators;
 
-import IslandModel.Location;
+import islandmodel.Location;
 
 
 public interface Predator {

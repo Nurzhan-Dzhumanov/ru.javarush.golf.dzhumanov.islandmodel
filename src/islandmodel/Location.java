@@ -1,14 +1,14 @@
-package IslandModel;
+package islandmodel;
 
-import IslandModel.Animals.Animal;
-import IslandModel.Animals.Herbivores.Duck;
-import IslandModel.Animals.Herbivores.Herbivore;
-import IslandModel.Animals.Herbivores.Horse;
-import IslandModel.Animals.Herbivores.Sheep;
-import IslandModel.Animals.Predators.Bear;
-import IslandModel.Animals.Predators.Predator;
-import IslandModel.Animals.Predators.Wolf;
-import IslandModel.Plants.Plant;
+import islandmodel.animals.Animal;
+import islandmodel.animals.herbivores.Duck;
+import islandmodel.animals.herbivores.Herbivore;
+import islandmodel.animals.herbivores.Horse;
+import islandmodel.animals.herbivores.Sheep;
+import islandmodel.animals.predators.Bear;
+import islandmodel.animals.predators.Predator;
+import islandmodel.animals.predators.Wolf;
+import islandmodel.plants.Plant;
 
 import java.util.ArrayList;
 import java.util.List;

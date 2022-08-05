@@ -1,6 +1,6 @@
-package IslandModel.Animals.Herbivores;
+package islandmodel.animals.herbivores;
 
-import IslandModel.Plants.Plant;
+import islandmodel.plants.Plant;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package IslandModel.Animals;
+package islandmodel.animals;
 
-import IslandModel.Animals.Predators.Predator;
-import IslandModel.Location;
+import islandmodel.animals.predators.Predator;
+import islandmodel.Location;
 
 import java.util.List;
 
