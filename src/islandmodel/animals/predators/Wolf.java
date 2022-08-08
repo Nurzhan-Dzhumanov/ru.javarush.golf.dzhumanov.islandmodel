@@ -18,7 +18,7 @@ public class Wolf extends Animal implements Predator {
     int weight = 50;
     int numberOfAnimals = 30;
     int travelSpeed = 3;
-    int foodForSatiety = 8;
+    int foodForSatiety = (int) (Math.random() * 8);
 
     String typeOfAnimal = "Wolf";
 
@@ -30,7 +30,6 @@ public class Wolf extends Animal implements Predator {
     public void multiplyPredator(Location[][] locations, int x, int y) {
         for (int i = 0; i < locations[x][y].predators.size(); i++) {
             if (this.equals(locations[x][y].predators.get(i)) && count < numberOfAnimals && count > 1) {
-                count++;
                 locations[x][y].predators.add(new Wolf());
             }
         }
@@ -38,29 +37,37 @@ public class Wolf extends Animal implements Predator {
 
     @Override
     public void directionOfMovement(Location[][] locations, int x, int y) {
-        int moveX = (int) (Math.random() * travelSpeed);
-        int moveY = (int) (Math.random() * travelSpeed);
-        int sizeX = (x + moveX) % locations[x].length;
-        int sizeY = (y + moveY) % locations[x].length;
-        locations[x][y].predators.remove(this);
-        locations[sizeX][sizeY].predators.add(this);
+        if (foodForSatiety < 8) {
+            int moveX = (int) (Math.random() * travelSpeed);
+            int moveY = (int) (Math.random() * travelSpeed);
+            int sizeX = (x + moveX) % locations[x].length;
+            int sizeY = (y + moveY) % locations[x].length;
+            locations[x][y].predators.remove(this);
+            locations[sizeX][sizeY].predators.add(this);
+        }
 
     }
 
     @Override
-    public Object dead(List<Predator> predatorList) {
-        count--;
-        return predatorList.remove(new Wolf());
+    public void dead(Location[][] locations, int x, int y) {
+        if (foodForSatiety == 0) {
+            locations[x][y].predators.remove(this);
+            count--;
+        }
     }
+
 
     @Override
     public void eatMeat(Location[][] locations, int x, int y) {
         menuAnimals();
-        for (int i = 0; i < locations[x][y].herbivores.size(); i++) {
-            for (int j = 0; j < menuAnimals().size(); j++) {
-                if (locations[x][y].herbivores.get(i).equals(menuAnimals().get(j))) {
-                    locations[x][y].herbivores.remove(i);
-                    if (i >= locations[x][y].herbivores.size()) break;
+        if (foodForSatiety < 8) {
+            for (int i = 0; i < locations[x][y].herbivores.size(); i++) {
+                for (int j = 0; j < menuAnimals().size(); j++) {
+                    if (locations[x][y].herbivores.get(i).equals(menuAnimals().get(j))) {
+                        locations[x][y].herbivores.remove(i);
+                        foodForSatiety++;
+                        if (i >= locations[x][y].herbivores.size()) break;
+                    }
                 }
             }
         }

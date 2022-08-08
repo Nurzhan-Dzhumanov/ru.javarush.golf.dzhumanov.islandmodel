@@ -42,6 +42,9 @@ public class Location {
             // ДВИГАЕМСЯ
             Animal animal = (Animal) predator;
             animal.directionOfMovement(locations,  x, y);
+
+            // УМИРАЕМ
+            animal.dead(locations, x, y);
         }
 
         for (int i = 0; i < herbivores.size(); i++) {
@@ -51,14 +54,17 @@ public class Location {
                 Duck duck = (Duck) herbivore;
                 duck.eatMeat(locations, x, y);
             }
-            herbivore.eatPlant(plants);
+            herbivore.eatPlant(locations, x, y);
 
             // РАЗМНОЖАЕМСЯ
-            herbivore.multiplyHerbivore(herbivores);
+            herbivore.multiplyHerbivore(locations , x, y);
+
             // ДВИГАЕМСЯ
             Animal animal = (Animal) herbivore;
             animal.directionOfMovement(locations, x, y);
 
+            // УМИРАЕМ
+            animal.dead(locations, x, y);
         }
     }
 

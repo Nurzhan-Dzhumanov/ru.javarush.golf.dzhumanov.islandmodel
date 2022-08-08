@@ -18,10 +18,13 @@ public class Island {
 
 
     public void print() {
+        int index = 0;
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
-                System.out.println(i + " " + locations[i][j]);
+                System.out.println(index + 1 + " " + locations[i][j]);
+                index++;
             }
+            System.out.println();
         }
     }
 

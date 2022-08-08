@@ -1,13 +1,11 @@
 package islandmodel.animals.herbivores;
 
-import islandmodel.plants.Plant;
-
-import java.util.List;
+import islandmodel.Location;
 
 public interface Herbivore {
 
-    void eatPlant(List<Plant> plants);
+    void eatPlant(Location[][] locations, int x, int y);
 
-    Object multiplyHerbivore(List<Herbivore> predatorList);
+    void multiplyHerbivore(Location[][] locations, int x, int y);
 
 }
