@@ -1,39 +1,33 @@
 package islandmodel;
 
+
 public class Island {
 
-    Location[][] locations;
+    public static void main(String[] args) {
 
-    Island(int a, int b) {
-        this.locations = new Location[a][b];
-    }
+        LocationGroup location1 = new LocationGroup(2, 2);
+        LocationGroup location2 = new LocationGroup(2, 2);
+        LocationGroup location3 = new LocationGroup(2, 2);
 
-    public void initialize() {
-        for (int i = 0; i < locations.length; i++) {
-            for (int j = 0; j < locations[i].length; j++) {
-                locations[i][j] = new Location();
-            }
-        }
-    }
+        Thread locationGroup1 = new Thread(location1);
+        Thread locationGroup2 = new Thread(location2);
+        Thread locationGroup3 = new Thread(location3);
 
+        location1.initialize();
+        location2.initialize();
+        location3.initialize();
 
-    public void print() {
-        int index = 0;
-        for (int i = 0; i < locations.length; i++) {
-            for (int j = 0; j < locations[i].length; j++) {
-                System.out.println(index + 1 + " " + locations[i][j]);
-                index++;
-            }
-            System.out.println();
-        }
-    }
+        location1.print();
+        location2.print();
+        location3.print();
 
-    public void islandLaunch() {
-        for (int i = 0; i < locations.length; i++) {
-            for (int j = 0; j < locations[i].length; j++) {
-                locations[i][j].calculate(locations, i, j);
-            }
-        }
+        System.out.println("=================================================");
+        LocationGroup.index = 0;
+
+        locationGroup1.start();
+        locationGroup2.start();
+        locationGroup3.start();
+
     }
 
 }

@@ -32,38 +32,23 @@ public class Location {
 
         for (int i = 0; i < predators.size(); i++) {
             Predator predator = predators.get(i);
-
-            // ЕДИМ
             predator.eatMeat(locations, x, y);
-
-            // РАЗМНОЖАЕМСЯ
             predator.multiplyPredator(locations, x, y);
-
-            // ДВИГАЕМСЯ
             Animal animal = (Animal) predator;
             animal.directionOfMovement(locations,  x, y);
-
-            // УМИРАЕМ
             animal.dead(locations, x, y);
         }
 
         for (int i = 0; i < herbivores.size(); i++) {
             Herbivore herbivore = herbivores.get(i);
-            // ЕДИМ
             if (herbivore.equals(new Duck())) {
                 Duck duck = (Duck) herbivore;
                 duck.eatMeat(locations, x, y);
             }
             herbivore.eatPlant(locations, x, y);
-
-            // РАЗМНОЖАЕМСЯ
             herbivore.multiplyHerbivore(locations , x, y);
-
-            // ДВИГАЕМСЯ
             Animal animal = (Animal) herbivore;
             animal.directionOfMovement(locations, x, y);
-
-            // УМИРАЕМ
             animal.dead(locations, x, y);
         }
     }
