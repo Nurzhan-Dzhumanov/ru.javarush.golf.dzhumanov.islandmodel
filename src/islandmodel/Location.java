@@ -1,14 +1,14 @@
 package islandmodel;
 
-import islandmodel.animals.Animal;
-import islandmodel.animals.herbivores.Duck;
-import islandmodel.animals.herbivores.Herbivore;
-import islandmodel.animals.herbivores.Horse;
-import islandmodel.animals.herbivores.Sheep;
-import islandmodel.animals.predators.Bear;
-import islandmodel.animals.predators.Predator;
-import islandmodel.animals.predators.Wolf;
-import islandmodel.plants.Plant;
+import islandmodel.animal.Animal;
+import islandmodel.animal.herbivore.Duck;
+import islandmodel.animal.herbivore.Herbivore;
+import islandmodel.animal.herbivore.Horse;
+import islandmodel.animal.herbivore.Sheep;
+import islandmodel.animal.predator.Bear;
+import islandmodel.animal.predator.Predator;
+import islandmodel.animal.predator.Wolf;
+import islandmodel.plant.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,13 @@ public class Location {
         addPredators(new Bear());
         addPredators(new Wolf());
         addPredators(new Duck());
+        addHerbivores(new Duck());
         addHerbivores(new Horse());
         addHerbivores(new Sheep());
+        addPlants(new Fruit());
+        addPlants(new Herb());
+        addPlants(new Leaf());
+        addPlants(new Seed());
 
     }
 
@@ -32,27 +37,22 @@ public class Location {
 
         for (int i = 0; i < predators.size(); i++) {
             Predator predator = predators.get(i);
-            predator.eatMeat(locations, x, y);
-            predator.multiplyPredator(locations, x, y);
-            Animal animal = (Animal) predator;
-            animal.directionOfMovement(locations,  x, y);
-            animal.dead(locations, x, y);
+            Animal predatorAnimal = (Animal) predator;
+            predatorAnimal.eat(locations, x, y);
+            predatorAnimal.multiply(locations, x, y);
+            predatorAnimal.directionOfMovement(locations, x, y);
+            predatorAnimal.dead(locations, x, y);
         }
 
         for (int i = 0; i < herbivores.size(); i++) {
             Herbivore herbivore = herbivores.get(i);
-            if (herbivore.equals(new Duck())) {
-                Duck duck = (Duck) herbivore;
-                duck.eatMeat(locations, x, y);
-            }
-            herbivore.eatPlant(locations, x, y);
-            herbivore.multiplyHerbivore(locations , x, y);
-            Animal animal = (Animal) herbivore;
-            animal.directionOfMovement(locations, x, y);
-            animal.dead(locations, x, y);
+            Animal herbivoreAnimal = (Animal) herbivore;
+            herbivoreAnimal.eat(locations, x, y);
+            herbivoreAnimal.multiply(locations, x, y);
+            herbivoreAnimal.directionOfMovement(locations, x, y);
+            herbivoreAnimal.dead(locations, x, y);
         }
     }
-
 
     @Override
     public String toString() {
@@ -60,16 +60,23 @@ public class Location {
     }
 
     private void addPredators(Predator predator) {
-        int random = (int) (Math.random() * 10);
+        int random = (int) (Math.random() * 8);
         for (int i = 0; i < random; i++) {
             predators.add(predator);
         }
     }
 
     private void addHerbivores(Herbivore herbivore) {
-        int random = (int) (Math.random() * 10);
+        int random = (int) (Math.random() * 5);
         for (int i = 0; i < random; i++) {
             herbivores.add(herbivore);
+        }
+    }
+
+    private void addPlants(Plant plant) {
+        int random = (int) (Math.random() * 5);
+        for (int i = 0; i < random; i++) {
+            plants.add(plant);
         }
     }
 }

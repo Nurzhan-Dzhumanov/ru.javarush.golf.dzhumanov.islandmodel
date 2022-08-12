@@ -1,33 +1,48 @@
 package islandmodel;
 
+public class Island implements Runnable {
 
-public class Island {
+    Location[][] locations;
 
-    public static void main(String[] args) {
+    static int index = 0;
 
-        LocationGroup location1 = new LocationGroup(2, 2);
-        LocationGroup location2 = new LocationGroup(2, 2);
-        LocationGroup location3 = new LocationGroup(2, 2);
-
-        Thread locationGroup1 = new Thread(location1);
-        Thread locationGroup2 = new Thread(location2);
-        Thread locationGroup3 = new Thread(location3);
-
-        location1.initialize();
-        location2.initialize();
-        location3.initialize();
-
-        location1.print();
-        location2.print();
-        location3.print();
-
-        System.out.println("=================================================");
-        LocationGroup.index = 0;
-
-        locationGroup1.start();
-        locationGroup2.start();
-        locationGroup3.start();
-
+    Island(int a, int b) {
+        this.locations = new Location[a][b];
     }
 
+    public void initialize() {
+        for (int i = 0; i < locations.length; i++) {
+            for (int j = 0; j < locations[i].length; j++) {
+                locations[i][j] = new Location();
+            }
+        }
+    }
+
+    public void print() {
+        for (int i = 0; i < locations.length; i++) {
+            for (int j = 0; j < locations[i].length; j++) {
+                System.out.println(index + 1 + " " + locations[i][j]);
+                index++;
+                sleep(1000);
+            }
+            System.out.println();
+        }
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < locations.length; i++) {
+            for (int j = 0; j < locations[i].length; j++) {
+                locations[i][j].calculate(locations, i, j);
+            }
+        }
+    }
+
+    public static void sleep(long time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
